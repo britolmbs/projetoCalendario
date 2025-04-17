@@ -4,6 +4,7 @@ exports.index = (req, res) => {
 };
 
 exports.register = async (req, res) => {
+    try{
     const login = new Login(req.body);
     await login.register();
     if(login.errors.length > 0) {
@@ -13,6 +14,15 @@ exports.register = async (req, res) => {
         });
         return;
     }
+    req.flash('success', 'Seu Usuario foi Criado com Sucesso');
+    req.session.save(function() {
+        return res.redirect('back');
+    });
+
+      return  res.send(login.errors);
+    } catch(e){
+       return  res.render('404');
+    }
+    };
   
-res.send(login.errors);
-};
+
