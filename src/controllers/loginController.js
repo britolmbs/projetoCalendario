@@ -24,5 +24,16 @@ exports.register = async (req, res) => {
        return  res.render('404');
     }
     };
+
+    exports.login = async (req, res) => {
+        try{
+            const login = new Login(req.body);
+            await login.login()
+
+        } catch(e) {
+
+        }
+    };
+
   
 
