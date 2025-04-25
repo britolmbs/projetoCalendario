@@ -52,4 +52,8 @@ Contato.prototype.cleanUp() = function() {
     }
 };
 
+Contato.prototype.edit = async function (id) {
+    if(typeof id !== 'string') return;
+};
+
 module.exports = Contato;
