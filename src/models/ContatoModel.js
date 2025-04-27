@@ -59,4 +59,12 @@ Contato.prototype.edit = async function (id) {
   this.contato= await ContatoModel.findByIdAndUpdate(id, this.body, { new: true });
 };
 
+Contato.buscaContato = async function () {
+  const contatos = await ContatoModel.find()
+  .sort({ criadoEm : -1 });
+  return contatos;
+}
+
+
+
 module.exports = Contato;
